@@ -1,0 +1,58 @@
+<div class="row">
+  <div *ngIf="productList.length==0" class="cart-item">
+    <p>you cart is empty</p>
+  </div>
+  <div *ngFor="let product of productList" class="cart-item">
+    <img src="{{product.url}}"><br>
+    {{product.name}}
+    <br><br>
+    <p> ${{product.price}}</p>
+    <br>
+    <p>Amount</p><select name="my-dropdown" [(ngModel)]="product.quantity" (ngModelChange)="updateTotalAmount()">
+    <option *ngFor="let number of numbers" [value]="number">{{number}}</option>
+  </select><br><br>
+    <button type="button" class="btn btn-danger" (click)="removeProduct(product)">remove</button>
+  </div>
+  <div class="cart-item">
+    <p><strong>Total: $ {{totalAmount}}</strong></p>
+  </div>
+</div>
+<div class="form-margin">
+  <form #form="ngForm" (ngSubmit)="onSubmit(thisfullName.value)">
+    <p>Full Name</p>
+    <input type="text" #thisfullName="ngModel" name="fullName" required minlength="3" [(ngModel)]="fullName"><br>
+    <p>Address</p>
+    <input type="text" #thisAddress="ngModel" name="address" required minlength="6" [(ngModel)]="address">
+    <p>credit Card Number</p>
+    <input type="tel" #thisCardNumber="ngModel" name="creditCardNumber" pattern="[0-9]+" required minlength="16"
+           maxlength="16"
+           [(ngModel)]="creditCardNumber"><br>
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+    <p>we'll never share your payment details with anyone else"</p>
+  </form>
+  <div *ngIf="thisfullName.invalid && thisfullName.dirty">
+    <div *ngIf="thisfullName.errors?.['required']">
+      Please provide a name for your payment details.
+    </div>
+    <div *ngIf="thisfullName.errors?.['minlength']">
+      The Full Name must contain at least 3 characters.
+    </div>
+  </div>
+  <div *ngIf="thisAddress.invalid && thisAddress.dirty">
+    <div *ngIf="thisAddress.errors?.['required']">
+      Please provide an Address.
+    </div>
+    <div *ngIf="thisAddress.errors?.['minlength']">
+      The Address must contain at least 6 characters.
+    </div>
+  </div>
+  <div *ngIf="thisCardNumber.invalid && thisCardNumber.dirty">
+    <div *ngIf="thisCardNumber.errors?.['required']">
+      Please provide a card Number.
+    </div>
+    <div *ngIf="thisCardNumber.errors?.['minlength']">
+      The credit card must be 16 characters.
+    </div>
+  </div>
+
+</div>

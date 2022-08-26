@@ -1,0 +1,15 @@
+<div class="detail-container ">
+  <img src="{{product.url}}"><br>
+  <div class="detail">
+    <p>{{product.name}}<br>
+    <p> ${{product.price}}<br>
+    <p> {{product.description}}<br><br>
+      <select name="my-dropdown" [(ngModel)]="product.quantity">
+
+        <option *ngFor="let number of numbers" [value]="number" >{{number}}</option>
+      </select><br><br>
+      <button type="button" class="btn btn-primary" (click)="productAdded(product)">Add to cart</button>
+      <br>
+      <a [routerLink]="['']"> Back to Product List</a><br>
+  </div>
+</div>

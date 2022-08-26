@@ -1,0 +1,24 @@
+img {
+  border-radius: 10px;
+  width: 320px;
+}
+
+.select-input {
+  width: 108px;
+  margin-bottom: 8px;
+}
+
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+  margin-left: 128px;
+  text-align: center;
+  margin-right: 128px;
+}
+
+.detail {
+  text-align: center;
+}
+

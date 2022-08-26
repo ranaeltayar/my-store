@@ -1,0 +1,9 @@
+<div class="product-container">
+  <img src="{{product.url}}" routerLink="/product-details/{{product.id}}"><br>
+  {{product.name}}<br><br>
+  <p> ${{product.price}}<br>
+    <select name="my-dropdown" [(ngModel)]="product.quantity">
+      <option *ngFor="let number of numbers" [value]="number">{{number}}</option>
+    </select><br>
+    <button type="button" class="btn btn-primary" (click)="added.emit(product)">Add to cart</button>
+</div>

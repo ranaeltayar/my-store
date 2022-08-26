@@ -1,0 +1,5 @@
+<div class="container-fluid" class="row">
+  <div class="product-container" class="row">
+      <app-product-item *ngFor="let product of productsList" [product]="product" (added)="productAdded(product)"></app-product-item>
+  </div>
+</div>
